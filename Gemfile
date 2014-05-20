@@ -40,3 +40,5 @@ gem 'rails_12factor', group: :production
 gem 'pg'
 ruby "1.9.3"
 gem "twitter-bootstrap-rails"
+gem "simple_form"
+gem 'phony_rails'

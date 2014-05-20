@@ -37,6 +37,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    countries (0.9.3)
+      currencies (~> 0.4.2)
+    currencies (0.4.2)
     erubis (2.7.0)
     execjs (2.0.2)
     hike (1.2.3)
@@ -51,7 +54,13 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     multi_json (1.10.1)
+    pg (0.13.2)
     pg (0.13.2-x86-mingw32)
+    phony (2.2.8)
+    phony_rails (0.6.1)
+      activesupport (>= 3.0)
+      countries (>= 0.8.2)
+      phony (~> 2.1)
     polyglot (0.3.4)
     rack (1.4.5)
     rack-cache (1.2)
@@ -88,6 +97,9 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    simple_form (2.1.1)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -115,8 +127,10 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   pg
+  phony_rails
   rails (= 3.2.13)
   rails_12factor
   sass-rails (~> 3.2.3)
+  simple_form
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
