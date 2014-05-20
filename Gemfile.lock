@@ -31,6 +31,7 @@ GEM
     arel (3.0.3)
     builder (3.0.4)
     erubis (2.7.0)
+    execjs (2.0.2)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -43,6 +44,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     multi_json (1.10.1)
+    pg (0.13.2)
     pg (0.13.2-x86-mingw32)
     polyglot (0.3.4)
     rack (1.4.5)
@@ -85,6 +87,11 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.8)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
     tzinfo (0.3.39)
 
 PLATFORMS
@@ -95,3 +102,4 @@ DEPENDENCIES
   pg
   rails (= 3.2.13)
   rails_12factor
+  twitter-bootstrap-rails

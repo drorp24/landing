@@ -39,3 +39,4 @@ gem 'jquery-rails'
 gem 'rails_12factor', group: :production
 gem 'pg'
 ruby "1.9.3"
+gem "twitter-bootstrap-rails"
