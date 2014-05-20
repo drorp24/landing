@@ -2,22 +2,23 @@ development:
   adapter: postgresql
   database: my_database_development
   username: admin
-  password: 29092012
+  password: '29092012'
   pool: 5
-  host: localhost
-  encoding: UTF8
+  encoding: unicode
 test:
   adapter: postgresql
   database: my_database_test
   username: admin
-  password: 29092012
+  password: '29092012'
   pool: 5
   timeout: 5000
+  encoding: unicode
 
 production:
   adapter: postgresql
   database: my_database_production
   username: admin
-  password: 29092012
+  password: '29092012'
   pool: 5
   timeout: 5000
+  encoding: unicode
