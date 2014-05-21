@@ -19,6 +19,6 @@ class User < ActiveRecord::Base
   validates :phone, :presence => true, :numericality => true
   validates :min_investment, 
     :numericality => { only_integer: true },
-    :numericality => { greater_than: 10000 }
+    :numericality => { greater_than: 11000 }
   
 end

@@ -23,9 +23,6 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  def try
-    
-  end
   # GET /users/new.json
   def new
     @user = User.new
