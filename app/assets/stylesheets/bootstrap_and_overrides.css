@@ -17,28 +17,6 @@ body {
     margin-top: -5px;
     width: 100%;
 }
-/* delete
-.a_container {
-    position: absolute;
-    top: 179%;
-    width: 45%; 
-    left: 20%; 
-    float: none;
-}
-.a_container .a_outer {
-   width: 100%; 
-   padding-top: 75%;
-   position: relative;
-}
-.a_container .a_outer .a_inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 10%;
-}
-*/
 #input_container {
     z-index: 2;
     position: absolute;
