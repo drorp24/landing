@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+
   def index
     @users = User.all
 
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
       if @user.save
         format.html { 
           UserMailer.welcome_email(@user).deliver
-          redirect_to root_path 
+          redirect_to @user, notice: "Welcome to GoExit, #{@user.name}! We've just sent you an email with details."
         }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -66,7 +67,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: "Updated" }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,0 +1,52 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  	      <p class="help-block"></p>
+
+    <%= f.input :email, required: true, autofocus: true, error: true, wrapper_html: { class: 'input-error' }, wrapper: :vertical_input_group, label: false, placeholder: 'youremail@domain.com' do %>
+    	<span class="add-on"><i class="ss-icon ss-user"></i></span>
+        <%= f.input_field :name, placeholder: "Full Name" %>
+  	<% end %>
+    <%= f.input :name, wrapper: :vertical_input_group, placeholder: 'Your full name', label: false, class: "form-control" %>
+    <%= f.input :phone, wrapper: :vertical_input_group, placeholder: 'Your phone', label: false, class: "form-control" %>
+   	<%= f.input :min_investment, wrapper: :vertical_input_group, placeholder: 'Minimum investment', label: false, class: "form-control" %>
+  </div>
+
+<% end %>
+<script type="text/javascript"> 
+
+$(document).ready(function() {
+
+	$('.form-group.user_name').hide();
+	$('.form-group.user_phone').hide();
+	$('.form-group.user_min_investment').hide();
+
+	$("#user_email" ).blur(function() {
+		$('input#user_email').css("border", "1px solid red");
+		alert('1')
+		$('.input#user_email').jqBootstrapValidation();
+		alert('2')
+		$('.form-group.user_email').hide();
+		$('.form-group.user_name').show();
+		$('.form-group.user_name').focus();
+//		$('.form_control #user_name').focus();
+//		$('input#user_name').css("border", "1px solid red");
+//		$('input#user_name').attr("autofocus", "true");
+	});
+	$("#user_name" ).blur(function() {
+		$('.form-group.user_name').hide();
+		$('.form-group.user_phone').show();
+		$('#user_phone').focus();
+	});
+	$("#user_phone" ).blur(function() {
+		$('.form-group.user_phone').hide();
+		$('.form-group.user_min_investment').show();
+		$('#user_min_investment').focus();
+	});
+	$("#user_min_investment" ).blur(function() {
+		$('#new_user').submit();
+	});
+
+})
+</script>

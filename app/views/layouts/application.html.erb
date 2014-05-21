@@ -35,13 +35,17 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "jqBootstrapValidation" %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
   </head>
   <body>
 
-    <div class="container-fluid" id="my_container">
+    <div class="container-fluid">
 
       <%= bootstrap_flash %>
 
+	  <%= image_tag "Goexit.jpg", id: "ge_background_img"%>
+      
       <%= yield %>
 
     </div>

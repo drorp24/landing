@@ -119,6 +119,9 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    valid_email (0.0.4)
+      activemodel
+      mail
 
 PLATFORMS
   x86-mingw32
@@ -134,3 +137,4 @@ DEPENDENCIES
   simple_form
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  valid_email
