@@ -2,22 +2,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, wrapper: :vertical_input_group, placeholder: 'Your email address', label: false do %>
-    	<span class="input-group-addon"><i class="icon-envelope"></i></span>
-    	<%= f.input_field :email, class: "form-control" %>
-	<% end %>
-    <%= f.input :name, wrapper: :vertical_input_group, placeholder: 'Your full name', label: false do %>
-    	<span class="input-group-addon"><i class="icon-user"></i></span>
-    	<%= f.input_field :name, class: "form-control" %>
-	<% end %>
-    <%= f.input :phone, wrapper: :vertical_input_group, placeholder: 'Your phone', label: false do %>
-     	<span class="input-group-addon"><i class="icon-phone-sign"></i></span>
-    	<%= f.input_field :phone, class: "form-control" %>
-	<% end %>
-   <%= f.input :min_investment, wrapper: :vertical_input_group, placeholder: 'Minimum investment', label: false do %>
-     	<span class="input-group-addon"><i class="icon-usd"></i></span>
-    	<%= f.input_field :min_investment, class: "form-control" %>
-	<% end %>
+    <%= f.input :email, wrapper: :vertical_input_group, label: false, placeholder: 'youremail@domain.com' %>
+    <%= f.input :name, wrapper: :vertical_input_group, placeholder: 'Your full name', label: false, class: "form-control" %>
+    <%= f.input :phone, wrapper: :vertical_input_group, placeholder: 'Your phone', label: false, class: "form-control" %>
+   	<%= f.input :min_investment, wrapper: :vertical_input_group, placeholder: 'Minimum investment', label: false, class: "form-control" %>
   </div>
 
 <% end %>
