@@ -10,3 +10,25 @@
     padding: 0;
     margin-top: -5px;
 }
+
+[class^="icon-"], [class*=" icon-"] {
+    opacity: 0.4;
+}
+.input-group-addon {
+    background: #FFF;
+    border: none;
+    width: 25px;
+}
+.input-group .form-control {
+    width: 500px;
+    height: 100%;
+    display: inherit;
+    margin-left: 20px;
+    transition: none;
+}
+.input-group .form-control input {
+    border: none;
+}
+input:focus {
+    border: none;
+}
