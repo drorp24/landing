@@ -10,3 +10,7 @@ en:
           attributes:
             email:
               email: "Email address is not valid"
+  errors:
+    messages:
+      improbable_phone: "is an invalid phone number"
+        

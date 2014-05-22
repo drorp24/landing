@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :min_investment, :name, :phone
   
+  phony_normalize :phone, :default_country_code => 'US'
+  phony_normalize :phone, :as => :phone, :default_country_code => 'US'
+  
   validates :email, :presence => true, :email => true
   validates :name, 
     :presence => true, 
@@ -17,6 +20,7 @@ class User < ActiveRecord::Base
         too_long: "must have at most %{count} words"
       }
   validates :phone, :presence => true, :numericality => true
+  validates :phone, :phony_plausible => true
   validates :min_investment, 
     :numericality => { only_integer: true },
     :numericality => { greater_than: 11000 }
