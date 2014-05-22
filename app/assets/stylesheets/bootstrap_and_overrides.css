@@ -6,6 +6,19 @@
   =require twitter-bootstrap-static/sprites
   */
  
+body {
+    line-height: 40px;
+}
+
+#new_user [class^="icon-"], [class*=" icon-"] {
+    opacity: 0.3;
+}
+.icon-large {
+    position: absolute;
+    margin-left: 4%;
+    margin-top: 15px;
+}
+
 #new_user .alert.alert-error {
     display: none;
 }
@@ -32,9 +45,6 @@
     margin-top: -5px;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-    opacity: 0.4;
-}
 #user_email1 {
     position: absolute;
     z-index 2;
@@ -43,11 +53,16 @@
 }
 #new_user input {
     display: inline;
-    padding-left: 5%;
-    width: 100%;
-    height: 112%;
+    width: 92%;
+    height: 100%;
+    margin-top: -5px;
     border: none;
     vertical-align: sub;
+    padding-left: 13%;
+        -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+
 }
 #new_user .form-control {
     height: 45px;
@@ -73,6 +88,6 @@
     display: block;
     font-size: 12px; 
     position: relative;
-    bottom: 10px;
-    left: 24px;
+    bottom: 15px;
+    left: 13%;
 }
