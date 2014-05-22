@@ -9,9 +9,18 @@
 		<i class="icon-large icon-envelope"></i>
 		<%= f.input_field :email, placeholder: 'youremail@domain.com' %>
 	<% end %>
-    <%= f.input :name, required: true, autofocus: true, error: true, wrapper: :vertical_input_group, placeholder: 'Your full name', label: false, class: "form-control" %>
-    <%= f.input :phone, wrapper: :vertical_input_group, placeholder: 'Your phone', label: false, class: "form-control" %>
-   	<%= f.input :min_investment, wrapper: :vertical_input_group, placeholder: 'Minimum investment', label: false, class: "form-control" %>
+    <%= f.input :name, required: true, autofocus: true, error: true, wrapper: :vertical_input_group, placeholder: 'Your full name', label: false, class: "form-control" do %>
+		<i class="icon-large icon-user"></i>
+		<%= f.input_field :name, placeholder: 'Your name?' %>
+	<% end %>
+    <%= f.input :phone, wrapper: :vertical_input_group, placeholder: 'Your phone', label: false, class: "form-control" do %>
+		<i class="icon-large icon-phone"></i>
+		<%= f.input_field :phone, placeholder: 'Your phone number?' %>
+	<% end %>
+   	<%= f.input :min_investment, wrapper: :vertical_input_group, placeholder: 'Minimum investment', label: false, class: "form-control" do %>
+		<i class="icon-large icon-credit"></i>
+		<%= f.input_field :min_investment, placeholder: 'How much are you planning to invest?' %>
+	<% end %>
   </div>
 
 <% end %>
@@ -27,7 +36,6 @@ $(document).ready(function() {
 
 
 	$("input#user_email" ).blur(function() {
-//		$('.input#user_email').jqBootstrapValidation();
 		$('.form-group.user_email').hide();
 		$('.form-group.user_name').show();
 		$('.input#user_name').focus();

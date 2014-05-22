@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
       :minimum => 2, 
       :maximum => 3, 
       :tokenizer => lambda { |str| str.scan(/\w+/) }, 
-        too_short: "must have at least %{count} words",
+        too_short: "Please provide us with your full name",
         too_long: "must have at most %{count} words"
       }
   validates :phone, :presence => true, :numericality => true
