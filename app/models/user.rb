@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :min_investment, :name, :phone
   
-  phony_normalize :phone, :default_country_code => 'US'
-  phony_normalize :phone, :as => :phone, :default_country_code => 'US'
+  phony_normalize :phone, :default_country_code => 'IL'
   
   validates :email, :presence => true, :email => true
   validates :name, 
@@ -21,8 +20,5 @@ class User < ActiveRecord::Base
       }
   validates :phone, :presence => true, :numericality => true
   validates :phone, :phony_plausible => true
-  validates :min_investment, 
-    :numericality => { only_integer: true },
-    :numericality => { greater_than: 11000 }
-  
+
 end

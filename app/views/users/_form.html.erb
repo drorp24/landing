@@ -19,7 +19,7 @@
 	<% end %>
    	<%= f.input :min_investment, wrapper: :vertical_input_group, placeholder: 'Minimum investment', label: false, class: "form-control" do %>
 		<i class="icon-large icon-credit"></i>
-		<%= f.input_field :min_investment, placeholder: 'How much are you planning to invest?' %>
+		<%= f.input_field :min_investment, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' }, placeholder: 'How much are you planning to invest?' %>
 	<% end %>
   </div>
 
@@ -27,9 +27,9 @@
 <script type="text/javascript"> 
 
 $(document).ready(function() {
-
-//	$(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
 	
+	$('input[data-role=money]').autoNumeric('init');
+
 	$('.form-group.user_name').hide();
 	$('.form-group.user_phone').hide();
 	$('.form-group.user_min_investment').hide();
@@ -53,6 +53,7 @@ $(document).ready(function() {
 	$("#user_min_investment" ).blur(function() {
 		$('#new_user').submit();
 	});
+
 
 	function get_browser(){
 	    var N=navigator.appName, ua=navigator.userAgent, tem;
