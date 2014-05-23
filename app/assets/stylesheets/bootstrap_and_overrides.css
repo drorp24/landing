@@ -10,13 +10,18 @@ body {
     line-height: 40px;
 }
 
+#new_user label {
+    display: inline;
+    margin-left: 10%;
+}
+
 #new_user [class^="icon-"], [class*=" icon-"] {
     opacity: 0.3;
 }
 .icon-large {
-    position: absolute;
     margin-left: 4%;
-    margin-top: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #new_user .alert.alert-error {
@@ -28,11 +33,13 @@ body {
 }
 #input_container {
     position: absolute;
-    top: 65%;
-    left: 24%;
-    width: 34.5%;
-    height: 7.6%;
+    top: 66.5%;
+    left: 24.4%;
+    width: 36%;
+    height: 7.5%;
     border: none;
+    background-color: transparent; 
+/*    border: 1px solid red;*/
 }
 
 #new_user {
@@ -50,21 +57,36 @@ body {
     left: 50px;
 }
 #new_user input {
-    display: inline;
-    width: 92%;
-    height: 100%;
-    margin-top: -5px;
+    height: 42px;
     border: none;
-    vertical-align: sub;
-    padding-left: 13%;
-        -webkit-appearance:none;
-    -moz-appearance:none;
-
+    background-color: #FFF;  /* should be transparent */
+    margin-left: -16%;
+    padding-left: 15%;
+    width: 103%;
+}    
+#min_investment, #max_investment {
+    width: 45%;
+    margin-left: 5%;
+/*    border: 1px solid black; */
+}
+input #min_investment, input #max_investment {
+    height: 95%;
+    margin-top:3%;
+    padding-top: 3%;
+}
+#min_investment {
+    float: left;
+}
+#max_investment {
+    float: right;
 }
 #new_user .form-control {
-    height: 45px;
+    height: 40px;
     border: none;
     border: 1px solid transparent;
+    z-index: 2;
+    background: transparent;
+
 }
 #new_user .form-group {
     display: inline;
@@ -73,14 +95,18 @@ body {
     display: inline;
     border: none;
 }
-.input-group .form-control input {
+.after_icon {
     border: none;
-/*    height: 80%; */
+/*    border: 1px solid blue; */
+    margin-left: 13%;    
+    width: 85%;
+    margin-top: -50px;
+    height: 100%;
 }
 #new_user .form-inputs {
     border: none;
 }
-#new_user .help-block {
+#new_user .help-block{
     color: #ED8B8B;
     display: block;
     font-size: 12px; 
@@ -88,4 +114,13 @@ body {
     bottom: 15px;
     left: 13%;
     line-height: 25px;
+}
+#new_user .hint {
+       color: #ED8B8B;
+    display: block;
+    font-size: 12px; 
+    position: relative;
+    bottom: 30px;
+    line-height: 25px;
+ 
 }

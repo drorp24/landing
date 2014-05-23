@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { 
-          UserMailer.welcome_email(@user).deliver
+#          UserMailer.welcome_email(@user).deliver
           redirect_to @user, notice: "Welcome to GoExit, #{@user.name}! We've just sent you an email with details."
         }
         format.json { render json: @user, status: :created, location: @user }

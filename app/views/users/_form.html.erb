@@ -7,19 +7,41 @@
  
     <%= f.input :email, required: true, autofocus: true, error: true, wrapper_html: { class: 'input-error' }, wrapper: :vertical_input_group, label: false do %>
 		<i class="icon-large icon-envelope"></i>
-		<%= f.input_field :email, placeholder: 'youremail@domain.com' %>
+		<div class="after_icon">
+			<%= f.input_field :email, placeholder: 'youremail@domain.com' %>
+		</div>
 	<% end %>
-    <%= f.input :name, required: true, autofocus: true, error: true, wrapper: :vertical_input_group, placeholder: 'Your full name', label: false, class: "form-control" do %>
+    <%= f.input :name, required: true, autofocus: true, error: true, wrapper: :vertical_input_group, label: false, class: "form-control" do %>
 		<i class="icon-large icon-user"></i>
-		<%= f.input_field :name, placeholder: 'Your name?' %>
+		<div class="after_icon">
+			<%= f.input_field :name, placeholder: 'Your full name?' %>
+		</div>
 	<% end %>
-    <%= f.input :phone, wrapper: :vertical_input_group, placeholder: 'Your phone', label: false, class: "form-control" do %>
+    <%= f.input :phone, wrapper: :vertical_input_group, label: false, class: "form-control" do %>
 		<i class="icon-large icon-phone"></i>
-		<%= f.input_field :phone, placeholder: 'Your phone number?' %>
+		<div class="after_icon">
+			<%= f.input_field :phone, placeholder: 'Your phone number?' %>
+		</div>
 	<% end %>
-   	<%= f.input :min_investment, wrapper: :vertical_input_group, placeholder: 'Minimum investment', label: false, class: "form-control" do %>
+   	<%= f.input :investment_help, wrapper: :vertical_input_group, label: false, class: "form-control" do %>
 		<i class="icon-large icon-credit"></i>
-		<%= f.input_field :min_investment, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' }, placeholder: 'How much are you planning to invest?' %>
+		<div class="after_icon">
+			<%= f.input_field :investment_help, data: { validate: 'false'}, placeholder: 'How much are you looking to invest?' %>
+		</div>
+		<span> to </span>
+	<% end %>
+   	<%= f.input :investment, wrapper: :vertical_input_group, label: false, class: "form-control clearfix" do %>
+		<i class="icon-large icon-credit"></i>
+		<div class="after_icon">
+			<div id="min_investment">
+				<%= f.input_field :min_investment, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' } %>
+				<%= f.hint 'From' %>
+			</div>
+			<div id="max_investment">
+				<%= f.input_field :max_investment, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' } %>
+				<%= f.hint 'To' %>
+			</div>
+		</div>
 	<% end %>
   </div>
 
@@ -32,8 +54,8 @@ $(document).ready(function() {
 
 	$('.form-group.user_name').hide();
 	$('.form-group.user_phone').hide();
-	$('.form-group.user_min_investment').hide();
-
+	$('.form-group.user_investment_help').hide();
+	$('.form-group.user_investment').hide();
 
 	$("input#user_email" ).blur(function() {
 		$('.form-group.user_email').hide();
@@ -47,10 +69,19 @@ $(document).ready(function() {
 	});
 	$("#user_phone" ).blur(function() {
 		$('.form-group.user_phone').hide();
-		$('.form-group.user_min_investment').show();
-		$('input#user_min_investment').focus();
+		$('.form-group.user_investment_help').show();
+	});
+	$("#user_investment_help" ).focus(function() {
+		$('.form-group.user_investment_help').hide();
+		$('.form-group.user_investment').show();
+//		$('.form-group.user_min_investment').focus();
 	});
 	$("#user_min_investment" ).blur(function() {
+		$('.form-group.input#user_max_investment').show();
+		$('input#user_max_investment').focus();
+		$('#new_user').submit();
+	});
+	$("#user_max_investment" ).blur(function() {
 		$('#new_user').submit();
 	});
 

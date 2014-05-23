@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   include ActiveModel::Validations
 
-  attr_accessible :email, :min_investment, :name, :phone
+  attr_accessible :email, :min_investment, :max_investment, :name, :phone, :investment_help
   
   phony_normalize :phone, :default_country_code => 'IL'
   
@@ -20,5 +20,11 @@ class User < ActiveRecord::Base
       }
   validates :phone, :presence => true, :numericality => true
   validates :phone, :phony_plausible => true
-
+  
+  def investment_help
+    
+  end
+  def investment_help=(help)
+    
+  end
 end
