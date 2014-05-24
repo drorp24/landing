@@ -1,3 +1,4 @@
+<div id="progressBar" class="tiny-green"><div></div></div>
 <%= simple_form_for @user, :validate => true do |f| %>
   <%= f.error_notification %>
 
@@ -43,6 +44,11 @@
 
 $(document).ready(function() {
 	
+function progress(percent, $element) {
+    var progressBarWidth = percent * $element.width() / 100;
+    $element.find('div').animate({ width: progressBarWidth }, 500).html(percent + "%&nbsp;");
+}
+
 $('input[data-role=money]').autoNumeric('init');
 
 $('#user_email').focus();			//focusing not working  - not beginning not end
@@ -69,52 +75,63 @@ var validator = $( "#new_user" ).validate({
 	}
 });
 
-//$.validator.addMethod('user[phone]', function(value) {
-//var numbers = value.split(/\d/).length - 1;
-//return (10 <= numbers && numbers <= 20 && value.match(/^(\+){0,1}(\d|\s|\(|\)){10,20}$/)); }, 'Please enter a valid phone number');
+jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+    phone_number = phone_number.replace(/\s+/g, ""); 
+	return this.optional(element) || phone_number.length > 9 &&
+		phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+}, "Please specify a valid phone number");
 
 $('#user_email').blur(function() {	
-	valid = validator.element( "#user_email" )
-	if (!valid) {
+	email_valid = validator.element( "#user_email" )
+	if (!email_valid) {
 		$("input#user_email").focus()
 	} else {
 		$('.form-group.user_email').css(hidden);
 		$('.form-group.user_name').css(revealed);
+		progress(25, $('#progressBar'));
 	}	
 })
-$('#user_name').blur(function() {							
-	valid = validator.element( "#user_name" )
-	if (!valid) {
+$('#user_name').blur(function() {
+	if (!email_valid) {return}							
+	name_valid = validator.element( "#user_name" )
+	if (!name_valid) {
 		$("input#user_name").focus()
 	} else {
+		if (!email_valid) {alert('but email is invalid')}
 		$('.form-group.user_name').css(hidden);
 		$('.form-group.user_phone').css(revealed);
+		progress(50, $('#progressBar'));
 	}
 })
 $('#user_phone').blur(function() {							
-	valid = validator.element( "#user_phone" )
-	if (!valid) {
+	if (!name_valid) {return}							
+	phone_valid = validator.element( "#user_phone" )
+	if (!phone_valid) {
 		$("input#user_phone").focus()
 	} else {
 		$('.form-group.user_phone').css(hidden);
 		$('.form-group.user_investment').css(revealed);
+		progress(75, $('#progressBar'));
 	}
 })
 $('#user_min_investment').blur(function() {							
-	valid = validator.element( "#user_min_investment" )
-	if (!valid) {
+	if (!phone_valid) {return}							
+	min_investment_valid = validator.element( "#user_min_investment" )
+	if (!min_investment_valid) {
 		$("input#user_min_investment").focus()
 	}
 })
 $('#user_max_investment').blur(function() {							
-	valid = validator.element( "#user_max_investment" )
-	if (!valid) {
+	if (!min_investment_valid) {return}							
+	max_investment_valid = validator.element( "#user_max_investment" )
+	if (!max_investment_valid) {
 		$("input#user_max_investment").focus()
+		return
 	} else {
 		if ($('#new_user').valid()) {
+			progress(100, $('#progressBar'));			
 			$('#new_user').submit();					
 		} else {
-			alert('but form is invalid')
 		}
 	}
 })
