@@ -7,13 +7,27 @@
   */
  
 
-
-/*
-#new_user .form-control:focus {
-  border-color: red;
-  outline: 0;
+#ge .alert {
+    position: absolute;
+    width: 100%;
 }
-*/
+
+#new_user input:focus {
+    border: none;
+    box-shadow: none;
+}
+
+#new_user input {
+    box-shadow: none;
+}
+
+#new_user .user_investment input[type="text"]:focus {
+  box-shadow: none;
+}
+#new_user .user_investment input[type="text"] {
+  box-shadow: none;
+}
+
 body {
     line-height: 40px;
 }
@@ -121,7 +135,7 @@ body {
 #new_user input {
     height: 42px;
     border: none;
-    background-color: #FFF;  /* should be transparent */
+    background-color: white;  /* should be transparent */
     margin-left: -16%;
     padding-left: 15%;
     width: 103%;

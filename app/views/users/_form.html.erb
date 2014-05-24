@@ -29,11 +29,11 @@
 		<div class="after_icon">
 			<div id="min_investment">
 				<%= f.input_field :min_investment, required: true, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' } %>
-				<%= f.hint "Investing from" %>
+				<%= f.hint "Investing at least" %>
 			</div>
 			<div id="max_investment">
 				<%= f.input_field :max_investment, required: true, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' } %>
-				<%= f.hint "To" %>
+				<%= f.hint "At most" %>
 			</div>
 		</div>
 	<% end %>
@@ -80,6 +80,10 @@ jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
 	return this.optional(element) || phone_number.length > 9 &&
 		phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
 }, "Please specify a valid phone number");
+
+jQuery.extend(jQuery.validator.messages, {
+    required:"Missing info",
+});
 
 $('#user_email').blur(function() {	
 	email_valid = validator.element( "#user_email" )
@@ -222,7 +226,20 @@ $("#new_user").click(function() {
 
 	if(get_browser() == "Firefox") {
 		$('#ugly').show();
+
+/*
+		$('input').focus(function(e){
+		   $(this).on("blur", function(e){
+		   	alert($(this).attr("id"))
+		        e.stopImmediatePropagation();
+		    	e.preventDefault();
+		 		$(this).focus();
+			});
+		})	
+*/
 	}
 
+	
 })
+
 </script>
