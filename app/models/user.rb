@@ -1,11 +1,12 @@
-require 'valid_email'
+#require 'valid_email'
 
 class User < ActiveRecord::Base
 
   include ActiveModel::Validations
 
   attr_accessible :email, :min_investment, :max_investment, :name, :phone
-  
+
+=begin  
   phony_normalize :phone, :default_country_code => 'IL'
   
   validates :email, :presence => true, :email => true
@@ -20,5 +21,5 @@ class User < ActiveRecord::Base
       }
   validates :phone, :presence => true, :numericality => true
   validates :phone, :phony_plausible => true
-  
+=end  
 end

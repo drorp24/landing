@@ -8,7 +8,7 @@
     <%= f.input :email, wrapper: :vertical_input_group, label: false do %>
 		<i class="icon-large icon-envelope"></i>
 		<div class="after_icon">
-			<%= f.input_field :email, type: "email", placeholder: 'youremail@domain.com' %>
+			<%= f.input_field :email, required: true, type: "email", placeholder: 'youremail@domain.com' %>
 		</div>
 	<% end %>
     <%= f.input :name, wrapper: :vertical_input_group, label: false do %>
@@ -80,31 +80,42 @@ $('#user_email').blur(function() {
 	} else {
 		$('.form-group.user_email').css(hidden);
 		$('.form-group.user_name').css(revealed);
-}
-	
+	}	
 })
-$('#user_name').blur(function() {							//that's the one that works
+$('#user_name').blur(function() {							
 	valid = validator.element( "#user_name" )
 	if (!valid) {
 		$("input#user_name").focus()
+	} else {
+		$('.form-group.user_name').css(hidden);
+		$('.form-group.user_phone').css(revealed);
 	}
 })
-$('#user_phone').blur(function() {							//that's the one that works
+$('#user_phone').blur(function() {							
 	valid = validator.element( "#user_phone" )
 	if (!valid) {
 		$("input#user_phone").focus()
+	} else {
+		$('.form-group.user_phone').css(hidden);
+		$('.form-group.user_investment').css(revealed);
 	}
 })
-$('#user_min_investment').blur(function() {							//that's the one that works
+$('#user_min_investment').blur(function() {							
 	valid = validator.element( "#user_min_investment" )
 	if (!valid) {
 		$("input#user_min_investment").focus()
 	}
 })
-$('#user_max_investment').blur(function() {							//that's the one that works
+$('#user_max_investment').blur(function() {							
 	valid = validator.element( "#user_max_investment" )
 	if (!valid) {
 		$("input#user_max_investment").focus()
+	} else {
+		if ($('#new_user').valid()) {
+			$('#new_user').submit();					
+		} else {
+			alert('but form is invalid')
+		}
 	}
 })
 
