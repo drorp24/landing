@@ -20,7 +20,7 @@
     <%= f.input :phone, wrapper: :vertical_input_group, label: false do %>
 		<i class="icon-large icon-phone"></i>
 		<div class="after_icon">
-			<%= f.input_field :phone, required: true, type: "tel", placeholder: 'Your phone number?' %>
+			<%= f.input_field :phone, required: true, type: "number", placeholder: 'Your phone number?' %>
 		</div>
 	<% end %>
    	<%= f.input :investment, wrapper: :vertical_input_group, label: false do %>
@@ -47,13 +47,41 @@ $('input[data-role=money]').autoNumeric('init');
 
 $('#user_email').focus();			//focusing not working  - not beginning not end
 
-var validator = $( "#new_user" ).validate();
+    var hidden = {
+      position : "absolute",
+      top: "-2000px"
+    };
 
-$('#user_email').blur(function() {							//that's the one that works
+	var revealed = {
+		position: "static"
+	} 
+	
+$('.form-group.user_name').css(hidden);
+$('.form-group.user_name').css(hidden);
+$('.form-group.user_phone').css(hidden);
+$('.form-group.user_investment').css(hidden);
+
+var validator = $( "#new_user" ).validate({
+	rules: {
+    	"user[phone]": {
+        	phoneUS: true
+    	}
+	}
+});
+
+//$.validator.addMethod('user[phone]', function(value) {
+//var numbers = value.split(/\d/).length - 1;
+//return (10 <= numbers && numbers <= 20 && value.match(/^(\+){0,1}(\d|\s|\(|\)){10,20}$/)); }, 'Please enter a valid phone number');
+
+$('#user_email').blur(function() {	
 	valid = validator.element( "#user_email" )
 	if (!valid) {
 		$("input#user_email").focus()
-	}
+	} else {
+		$('.form-group.user_email').css(hidden);
+		$('.form-group.user_name').css(revealed);
+}
+	
 })
 $('#user_name').blur(function() {							//that's the one that works
 	valid = validator.element( "#user_name" )
