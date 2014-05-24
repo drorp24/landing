@@ -4,6 +4,35 @@
 
 <script>
 
+function get_browser(){
+    var N=navigator.appName, ua=navigator.userAgent, tem;
+    var M=ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+    if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+    M=M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
+    return M[0];
+    }
+
+browser = get_browser()
+if(browser == "Firefox") {
+	$('#input_container').css("top", "65.5%")
+}
+if (browser == "Netscape")	{
+	$('#input_container').css("top", "67%")
+	$('input').css("height", "36px")
+}
+/*
+	$('input').focus(function(e){
+	   $(this).on("blur", function(e){
+	   	alert($(this).attr("id"))
+	        e.stopImmediatePropagation();
+	    	e.preventDefault();
+	 		$(this).focus();
+		});
+	})	
+*/
+
+
+
 $( window ).resize(function() {
   	$("#input_container").css("top", $( window ).width()    * 0.315);
   	$("#input_container").css("left", $( window ).width()   * 0.242);

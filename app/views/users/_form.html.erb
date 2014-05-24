@@ -1,11 +1,9 @@
-<div id="progressBar" class="tiny-green"><div></div></div>
+<div id="progressBar" class="tiny-green" style="display: none"><div></div></div>
 <%= simple_form_for @user, :validate => true do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
   	
-  	<p id="ugly" style="display: none"></p>
- 
     <%= f.input :email, wrapper: :vertical_input_group, label: false do %>
 		<i class="icon-large icon-envelope"></i>
 		<div class="after_icon">
@@ -67,6 +65,13 @@ $('.form-group.user_name').css(hidden);
 $('.form-group.user_phone').css(hidden);
 $('.form-group.user_investment').css(hidden);
 
+jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+    phone_number = phone_number.replace(/\s+/g, ""); 
+	return this.optional(element) || phone_number.length > 9 &&
+		phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+}, "Please specify a valid phone number");
+
+
 var validator = $( "#new_user" ).validate({
 	rules: {
     	"user[phone]": {
@@ -75,16 +80,14 @@ var validator = $( "#new_user" ).validate({
 	}
 });
 
-jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
-    phone_number = phone_number.replace(/\s+/g, ""); 
-	return this.optional(element) || phone_number.length > 9 &&
-		phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
-}, "Please specify a valid phone number");
 
 jQuery.extend(jQuery.validator.messages, {
-    required:"Missing info",
+    required:"Please fill-up",
 });
 
+$('#user_email').keydown(function() {
+//	$('#progressBar').show();
+})
 $('#user_email').blur(function() {	
 	email_valid = validator.element( "#user_email" )
 	if (!email_valid) {
@@ -139,105 +142,6 @@ $('#user_max_investment').blur(function() {
 		}
 	}
 })
-
-/*
-
-$("#user_phone").validate({
-  invalidHandler: function(event, validator) {
-    // 'this' refers to the form
-    var errors = validator.numberOfInvalids();
-    if (errors) {
-      var message = errors == 1
-        ? 'You missed 1 field. It has been highlighted'
-        : 'You missed ' + errors + ' fields. They have been highlighted';
-      $("div.error span").html(message);
-      $("div.error").show();
-    } else {
-      $("div.error").hide();
-    }
-  }
-});
-var validator = $("#new_user").validate({  });
-
-
-$("#new_user").click(function() {
-		onfocusout: false,
-        if ($("#new_user").valid()) 
-              alert("Valid!");
-        else
-              validator.focusInvalid();
-
-        return false;
-  });
-
-
-	$('#new_user').validate({
-   		focusInvalid: false, 
-   		invalidHandler: function() { 
-     		$(this).find("input.error:first").focus(); 
-   		} 
- 	}); 
- 
-	$('input[data-role=money]').autoNumeric('init');
-
-	$('.form-group.user_name').hide();
-	$('.form-group.user_phone').hide();
-	$('.form-group.user_investment_help').hide();
-	$('.form-group.user_investment').hide();
-
-
-
-
-		$('.form-group.user_email').hide();
-		$('.form-group.user_name').show();
-		$('.input#user_name').focus();
-	});
-	$("#user_name" ).blur(function() {
-		$('.form-group.user_name').hide();
-		$('.form-group.user_phone').show();
-		$('input#user_phone').focus();
-	});
-	$("#user_phone" ).blur(function() {
-		$('.form-group.user_phone').hide();
-		$('.form-group.user_investment_help').show();
-	});
-	$("#user_investment_help" ).focus(function() {
-		$('.form-group.user_investment_help').hide();
-		$('.form-group.user_investment').show();
-		$('.form-group.user_min_investment').focus();
-	});
-	$("#user_min_investment" ).blur(function() {
-		$('.form-group.input#user_max_investment').show();
-		$('input#user_max_investment').focus();
-		$('#new_user').submit();
-	});
-	$("#user_max_investment" ).blur(function() {
-		$('#new_user').submit();
-	});
-
-*/
-	function get_browser(){
-	    var N=navigator.appName, ua=navigator.userAgent, tem;
-	    var M=ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-	    if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
-	    M=M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
-	    return M[0];
-	    }
-
-	if(get_browser() == "Firefox") {
-		$('#ugly').show();
-
-/*
-		$('input').focus(function(e){
-		   $(this).on("blur", function(e){
-		   	alert($(this).attr("id"))
-		        e.stopImmediatePropagation();
-		    	e.preventDefault();
-		 		$(this).focus();
-			});
-		})	
-*/
-	}
 
 	
 })
