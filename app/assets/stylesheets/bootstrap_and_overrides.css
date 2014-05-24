@@ -107,20 +107,21 @@ input #min_investment, input #max_investment {
     border: none;
 }
 #new_user .help-block{
-    color: #ED8B8B;
-    display: block;
-    font-size: 12px; 
-    position: relative;
-    bottom: 15px;
-    left: 13%;
-    line-height: 25px;
 }
-#new_user .hint {
-       color: #ED8B8B;
+#new_user span.error, #new_user .hint, #new_user label.error {
+    color: #ED8B8B;
     display: block;
     font-size: 12px; 
     position: relative;
     bottom: 30px;
     line-height: 25px;
- 
+}
+#new_user .span.error {
+    left: -1%; 
+}
+#new_user label.error {
+    left: -11%;
+}
+#new_user span.hint {
+    color: #999;    
 }

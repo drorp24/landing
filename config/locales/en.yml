@@ -8,9 +8,17 @@ en:
       models:
         user:
           attributes:
-            email:
+            email: 
               email: "Email address is not valid"
   errors:
     messages:
       improbable_phone: "is an invalid phone number"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            phone:
+              phony_plausible:
+                "invalid phone number"
         

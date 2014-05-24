@@ -43,5 +43,5 @@ gem "twitter-bootstrap-rails"
 gem "simple_form"
 gem 'phony_rails'
 gem 'valid_email'
-gem 'client_side_validations'
+gem 'client_side_validations', :github => 'bcardarella/client_side_validations', :branch => '3-2-stable'
 gem 'client_side_validations-simple_form'

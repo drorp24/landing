@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   include ActiveModel::Validations
 
-  attr_accessible :email, :min_investment, :max_investment, :name, :phone, :investment_help
+  attr_accessible :email, :min_investment, :max_investment, :name, :phone
   
   phony_normalize :phone, :default_country_code => 'IL'
   
@@ -12,19 +12,13 @@ class User < ActiveRecord::Base
   validates :name, 
     :presence => true, 
     :length => {
-      :minimum => 2, 
-      :maximum => 3, 
+      :minimum => 4, 
+      :maximum => 5, 
       :tokenizer => lambda { |str| str.scan(/\w+/) }, 
         too_short: "Please provide us with your full name",
-        too_long: "must have at most %{count} words"
+        too_long: "That is not a real name"
       }
   validates :phone, :presence => true, :numericality => true
   validates :phone, :phony_plausible => true
   
-  def investment_help
-    
-  end
-  def investment_help=(help)
-    
-  end
 end

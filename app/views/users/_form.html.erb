@@ -5,41 +5,34 @@
   	
   	<p id="ugly" style="display: none"></p>
  
-    <%= f.input :email, required: true, autofocus: true, error: true, wrapper_html: { class: 'input-error' }, wrapper: :vertical_input_group, label: false do %>
+    <%= f.input :email, wrapper: :vertical_input_group, label: false do %>
 		<i class="icon-large icon-envelope"></i>
 		<div class="after_icon">
-			<%= f.input_field :email, placeholder: 'youremail@domain.com' %>
+			<%= f.input_field :email, type: "email", placeholder: 'youremail@domain.com' %>
 		</div>
 	<% end %>
-    <%= f.input :name, required: true, autofocus: true, error: true, wrapper: :vertical_input_group, label: false, class: "form-control" do %>
+    <%= f.input :name, wrapper: :vertical_input_group, label: false do %>
 		<i class="icon-large icon-user"></i>
 		<div class="after_icon">
-			<%= f.input_field :name, placeholder: 'Your full name?' %>
+			<%= f.input_field :name, required: true, placeholder: 'Your full name?' %>
 		</div>
 	<% end %>
-    <%= f.input :phone, wrapper: :vertical_input_group, label: false, class: "form-control" do %>
+    <%= f.input :phone, wrapper: :vertical_input_group, label: false do %>
 		<i class="icon-large icon-phone"></i>
 		<div class="after_icon">
-			<%= f.input_field :phone, placeholder: 'Your phone number?' %>
+			<%= f.input_field :phone, required: true, type: "tel", placeholder: 'Your phone number?' %>
 		</div>
 	<% end %>
-   	<%= f.input :investment_help, wrapper: :vertical_input_group, label: false, class: "form-control" do %>
-		<i class="icon-large icon-credit"></i>
-		<div class="after_icon">
-			<%= f.input_field :investment_help, data: { validate: 'false'}, placeholder: 'How much are you looking to invest?' %>
-		</div>
-		<span> to </span>
-	<% end %>
-   	<%= f.input :investment, wrapper: :vertical_input_group, label: false, class: "form-control clearfix" do %>
+   	<%= f.input :investment, wrapper: :vertical_input_group, label: false do %>
 		<i class="icon-large icon-credit"></i>
 		<div class="after_icon">
 			<div id="min_investment">
-				<%= f.input_field :min_investment, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' } %>
-				<%= f.hint 'From' %>
+				<%= f.input_field :min_investment, required: true, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' } %>
+				<%= f.hint "Investing from" %>
 			</div>
 			<div id="max_investment">
-				<%= f.input_field :max_investment, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' } %>
-				<%= f.hint 'To' %>
+				<%= f.input_field :max_investment, required: true, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' } %>
+				<%= f.hint "To" %>
 			</div>
 		</div>
 	<% end %>
@@ -50,6 +43,81 @@
 
 $(document).ready(function() {
 	
+$('input[data-role=money]').autoNumeric('init');
+
+$('#user_email').focus();			//focusing not working  - not beginning not end
+
+var validator = $( "#new_user" ).validate();
+
+$('#user_email').blur(function() {							//that's the one that works
+	valid = validator.element( "#user_email" )
+	if (!valid) {
+		$("input#user_email").focus()
+	}
+})
+$('#user_name').blur(function() {							//that's the one that works
+	valid = validator.element( "#user_name" )
+	if (!valid) {
+		$("input#user_name").focus()
+	}
+})
+$('#user_phone').blur(function() {							//that's the one that works
+	valid = validator.element( "#user_phone" )
+	if (!valid) {
+		$("input#user_phone").focus()
+	}
+})
+$('#user_min_investment').blur(function() {							//that's the one that works
+	valid = validator.element( "#user_min_investment" )
+	if (!valid) {
+		$("input#user_min_investment").focus()
+	}
+})
+$('#user_max_investment').blur(function() {							//that's the one that works
+	valid = validator.element( "#user_max_investment" )
+	if (!valid) {
+		$("input#user_max_investment").focus()
+	}
+})
+
+/*
+
+$("#user_phone").validate({
+  invalidHandler: function(event, validator) {
+    // 'this' refers to the form
+    var errors = validator.numberOfInvalids();
+    if (errors) {
+      var message = errors == 1
+        ? 'You missed 1 field. It has been highlighted'
+        : 'You missed ' + errors + ' fields. They have been highlighted';
+      $("div.error span").html(message);
+      $("div.error").show();
+    } else {
+      $("div.error").hide();
+    }
+  }
+});
+var validator = $("#new_user").validate({  });
+
+
+$("#new_user").click(function() {
+		onfocusout: false,
+        if ($("#new_user").valid()) 
+              alert("Valid!");
+        else
+              validator.focusInvalid();
+
+        return false;
+  });
+
+
+	$('#new_user').validate({
+   		focusInvalid: false, 
+   		invalidHandler: function() { 
+     		$(this).find("input.error:first").focus(); 
+   		} 
+ 	}); 
+ 
 	$('input[data-role=money]').autoNumeric('init');
 
 	$('.form-group.user_name').hide();
@@ -57,7 +125,9 @@ $(document).ready(function() {
 	$('.form-group.user_investment_help').hide();
 	$('.form-group.user_investment').hide();
 
-	$("input#user_email" ).blur(function() {
+
+
+
 		$('.form-group.user_email').hide();
 		$('.form-group.user_name').show();
 		$('.input#user_name').focus();
@@ -74,7 +144,7 @@ $(document).ready(function() {
 	$("#user_investment_help" ).focus(function() {
 		$('.form-group.user_investment_help').hide();
 		$('.form-group.user_investment').show();
-//		$('.form-group.user_min_investment').focus();
+		$('.form-group.user_min_investment').focus();
 	});
 	$("#user_min_investment" ).blur(function() {
 		$('.form-group.input#user_max_investment').show();
@@ -85,7 +155,7 @@ $(document).ready(function() {
 		$('#new_user').submit();
 	});
 
-
+*/
 	function get_browser(){
 	    var N=navigator.appName, ua=navigator.userAgent, tem;
 	    var M=ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
