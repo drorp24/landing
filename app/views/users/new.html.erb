@@ -33,7 +33,9 @@ var os = (function() {
     };
 }());
 
-if (os.isWin8 || os.isWin81 ) { alert('windows 8') }; 
+if (os.isWin8 || os.isWin81 ) { 
+	('#input_container1').css("top", "60%") 
+	}; 
 
 browser = get_browser()
 alert(browser)
