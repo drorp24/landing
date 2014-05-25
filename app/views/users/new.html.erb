@@ -19,7 +19,12 @@ function get_browser(){
     return M[0];
     }
 
+var ua = navigator.userAgent;
+var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2/i.test(ua);
+
 browser = get_browser()
+alert(isiPad)
+alert(browser)
 if(browser == "Firefox") {
 	$('#input_container1').css("top", "65.5%")
 	$('input').css("height", "37px")
@@ -32,7 +37,7 @@ if (browser == "MSIE")	{
 	$('#input_container1').css("top", "57%")
 	$('input').css("height", "36px")
 }
-if (browser == "Safari")	{
+if (isiPad)	{
 	$('#input_container1').css("top", "48%")
 	$('input').css("height", "36px")
 }
