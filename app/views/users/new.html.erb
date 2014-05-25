@@ -21,6 +21,19 @@ function get_browser(){
 
 var ua = navigator.userAgent;
 var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2/i.test(ua);
+var os = (function() {
+    var ua = navigator.userAgent.toLowerCase();
+    return {
+        isWin2K: /windows nt 5.0/.test(ua),
+        isXP: /windows nt 5.1/.test(ua),
+        isVista: /windows nt 6.0/.test(ua),
+        isWin7: /windows nt 6.1/.test(ua),
+        isWin8: /windows nt 6.2/.test(ua),
+        isWin81: /windows nt 6.3/.test(ua)
+    };
+}());
+
+if (os.isWin8 || os.isWin81 ) { alert('windows 8') }; 
 
 browser = get_browser()
 alert(browser)
@@ -40,7 +53,7 @@ if (isiPad)	{
 	$('#input_container1').css("top", "48%")
 	$('input').css("height", "36px")
 }
-if (typeof Windows != "undefined") { alert('windows 8') }; 
+if (os.isWin8 || os.isWin81 ) { alert('windows 8') }; 
 
 /*
 	$('input').focus(function(e){
