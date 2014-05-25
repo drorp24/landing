@@ -60,9 +60,9 @@ $('#user_email').focus();			//focusing not working  - not beginning not end
 		position: "static"
 	} 
 	
-$('.form-group.user_name').css(hidden);
-$('.form-group.user_phone').css(hidden);
-$('.form-group.user_investment').css(hidden);
+	$('.form-group.user_name').css(hidden);
+	$('.form-group.user_phone').css(hidden);
+	$('.form-group.user_investment').css(hidden);
 
 
 var validator = $( "#new_user" ).validate({
@@ -142,6 +142,7 @@ $('#user_max_investment').blur(function() {
 		return
 	} else {
 		if ($('#new_user').valid()) {
+		$("input#user_max_investment").focus()
 			progress(100, $('#progressBar'));			
 			$('#new_user').submit();					
 		} else {
