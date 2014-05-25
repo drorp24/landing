@@ -1,0 +1,10 @@
+<input class="click_me">
+<script>
+$(document).ready(function() {
+	$('.click_me').click(function() {
+ 		$("html, body").animate({ scrollTop: 0 }, "slow");
+		$("#user_email").focus();
+  		return false;
+	})
+})
+</script>

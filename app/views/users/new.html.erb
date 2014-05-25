@@ -1,6 +1,13 @@
-<div id="input_container">
+<div id="input_container1">
 	<%= render 'form' %>
 </div>
+<div id="input_container2">
+	<%= render 'to_form' %>
+</div>
+<div id="input_container3">
+	<%= render 'to_form' %>
+</div>
+	
 
 <script>
 
@@ -14,11 +21,11 @@ function get_browser(){
 
 browser = get_browser()
 if(browser == "Firefox") {
-	$('#input_container').css("top", "65.5%")
+	$('#input_container1').css("top", "65.5%")
 	$('input').css("height", "37px")
 }
 if (browser == "Netscape")	{
-	$('#input_container').css("top", "67%")
+	$('#input_container1').css("top", "67%")
 	$('input').css("height", "36px")
 }
 /*
@@ -35,11 +42,11 @@ if (browser == "Netscape")	{
 
 
 $( window ).resize(function() {
-  	$("#input_container").css("top", $( window ).width()    * 0.315);
-  	$("#input_container").css("left", $( window ).width()   * 0.242);
-  	$("#input_container").css("width", $( window ).width()  * 0.345);
-  	$("#input_container").css("height", $( window ).height() * 0.04);
-  	$("#input_container .form-control input").css("height", $( window ).height() * 0.065);
+  	$("#input_container1").css("top", $( window ).width()    * 0.315);
+  	$("#input_container1").css("left", $( window ).width()   * 0.242);
+  	$("#input_container1").css("width", $( window ).width()  * 0.345);
+  	$("#input_container1").css("height", $( window ).height() * 0.04);
+  	$("#input_container1 .form-control input").css("height", $( window ).height() * 0.065);
 });
 
 </script>

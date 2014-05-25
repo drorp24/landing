@@ -6,7 +6,13 @@
   =require twitter-bootstrap-static/sprites
   */
  
-
+.click_me {
+    width: 100%;
+    height: 200%;
+    border: none;
+    box-shading: none;
+    opacity: 0;
+}
 
 #ge .alert {
     position: absolute;
@@ -108,7 +114,7 @@ body {
     margin-top: -5px;
     width: 100%;
 }
-#input_container {
+#input_container1 {
     position: absolute;
     top: 64.5%;
     left: 24.4%;
@@ -116,7 +122,23 @@ body {
     height: 7.5%;
     border: none;
     background-color: transparent; 
-/*    border: 1px solid red;*/
+}
+#input_container2 {
+    position: absolute;
+    top: 884%;
+    left: 16.4%;
+    width: 44%;
+    height: 10%;
+    background-color: transparent; 
+}
+#input_container3 {
+    position: absolute;
+    top: 884%;
+    left: 63%;
+    width: 20%;
+    height: 10%;
+    background-color: transparent;
+    
 }
 
 #new_user {
@@ -166,6 +188,9 @@ input #min_investment, input #max_investment {
     z-index: 2;
     background: transparent;
 
+}
+#input_container2 #new_user .form_control {
+    margin-top: 7px;
 }
 #new_user .form-group {
     display: inline;
