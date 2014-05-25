@@ -34,11 +34,11 @@ var os = (function() {
 }());
 
 if (os.isWin8 || os.isWin81 ) { 
-	('#input_container1').css("top", "50%") 
+	('#input_container1 input').css("position", "relative") 
+	('#input_container1 input').css("bottom", "20px") 
 	}; 
 
 browser = get_browser()
-alert(browser)
 if(browser == "Firefox") {
 	$('#input_container1').css("top", "65.5%")
 	$('input').css("height", "37px")
@@ -55,7 +55,6 @@ if (isiPad)	{
 	$('#input_container1').css("top", "48%")
 	$('input').css("height", "36px")
 }
-if (os.isWin8 || os.isWin81 ) { alert('windows 8') }; 
 
 /*
 	$('input').focus(function(e){
