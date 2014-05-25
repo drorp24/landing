@@ -10,6 +10,24 @@
 	
 
 <script>
+$(document).ready(function() {
+	  	
+$("#input_container1").css("top", $( window ).width()    * 0.317);
+$("#input_container1").css("left", $( window ).width()   * 0.242);
+$("#input_container1").css("width", $( window ).width()  * 0.345);
+$("#input_container1").css("height", $( window ).height() * 0.04);
+$("#input_container1 .form-control input").css("height", $( window ).height() * 0.065);
+$("#input_container1 #progressBar").css("top", $( window ).height() * 0.12);
+
+
+$( window ).resize(function() {
+  	$("#input_container1").css("top", $( window ).width()    * 0.317);
+  	$("#input_container1").css("left", $( window ).width()   * 0.242);
+  	$("#input_container1").css("width", $( window ).width()  * 0.345);
+  	$("#input_container1").css("height", $( window ).height() * 0.04);
+  	$("#input_container1 .form-control input").css("height", $( window ).height() * 0.065);
+  	$("#input_container1 #progressBar").css("top", $( window ).height() * 0.12);
+});
 
 function get_browser(){
     var N=navigator.appName, ua=navigator.userAgent, tem;
@@ -72,15 +90,7 @@ if (isiPad)	{
 */
 
 
-
-$( window ).resize(function() {
-  	$("#input_container1").css("top", $( window ).width()    * 0.315);
-  	$("#input_container1").css("left", $( window ).width()   * 0.242);
-  	$("#input_container1").css("width", $( window ).width()  * 0.345);
-  	$("#input_container1").css("height", $( window ).height() * 0.04);
-  	$("#input_container1 .form-control input").css("height", $( window ).height() * 0.065);
-  	$("#input_container1 #progressBar").css("top", $( window ).height() * 0.12);
-});
+})
 
 </script>
 
