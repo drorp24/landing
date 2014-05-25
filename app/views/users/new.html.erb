@@ -33,9 +33,13 @@ var os = (function() {
     };
 }());
 
+    var win8_offset = {
+      position : "relative",
+      bottom "40px"
+    };
+
 if (os.isWin8 || os.isWin81 ) { 
-	('#input_container1 input').css("position", "relative") 
-	('#input_container1 input').css("bottom", "40px") 
+	('#input_container1 input').css(win8_offset) 
 	}; 
 
 browser = get_browser()
