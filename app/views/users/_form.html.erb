@@ -72,15 +72,15 @@ var validator = $( "#new_user" ).validate({
     		fullName: true
 		},
     	"user[phone]": {
-        	phoneUS: true
+        	phoneIL: true
     	}
 	}
 });
 
-jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+jQuery.validator.addMethod("phoneIL", function(phone_number, element) {
     phone_number = phone_number.replace(/\s+/g, ""); 
 	return this.optional(element) || phone_number.length > 9 &&
-		phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+		phone_number.match(/^0\d([\d]{0,1})([-]{0,1})\d{7}$/);
 }, "Please specify a valid phone number");
 
 jQuery.validator.addMethod("fullName", function(name, element) {
@@ -131,6 +131,7 @@ $('#user_min_investment').blur(function() {
 	min_investment_valid = validator.element( "#user_min_investment" )
 	if (!min_investment_valid) {
 		$("input#user_min_investment").focus()
+		$("#min_investment span.hint").remove()
 	}
 })
 $('#user_max_investment').blur(function() {							
@@ -138,6 +139,7 @@ $('#user_max_investment').blur(function() {
 	max_investment_valid = validator.element( "#user_max_investment" )
 	if (!max_investment_valid) {
 		$("input#user_max_investment").focus()
+		$("#max_investment span.hint").remove()
 		return
 	} else {
 		if ($('#new_user').valid()) {
