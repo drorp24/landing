@@ -23,7 +23,6 @@ var ua = navigator.userAgent;
 var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2/i.test(ua);
 
 browser = get_browser()
-alert(isiPad)
 alert(browser)
 if(browser == "Firefox") {
 	$('#input_container1').css("top", "65.5%")
@@ -41,6 +40,8 @@ if (isiPad)	{
 	$('#input_container1').css("top", "48%")
 	$('input').css("height", "36px")
 }
+if (typeof Windows != "undefined") { alert('windows 8') }; 
+
 /*
 	$('input').focus(function(e){
 	   $(this).on("blur", function(e){
