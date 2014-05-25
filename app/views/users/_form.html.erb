@@ -1,5 +1,5 @@
 <div id="progressBar" class="tiny-green" style="display: none"><div></div></div>
-<%= simple_form_for @user, :validate => true do |f| %>
+<%= simple_form_for @user do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -19,7 +19,7 @@
     <%= f.input :phone, wrapper: :vertical_input_group, label: false do %>
 		<i class="icon-large icon-phone"></i>
 		<div class="after_icon">
-			<%= f.input_field :phone, required: true, type: "number", placeholder: 'Your phone number?' %>
+			<%= f.input_field :phone, required: true, type: "text", placeholder: 'Your phone number?' %>
 		</div>
 	<% end %>
    	<%= f.input :investment, wrapper: :vertical_input_group, label: false do %>
@@ -65,28 +65,34 @@ $('.form-group.user_name').css(hidden);
 $('.form-group.user_phone').css(hidden);
 $('.form-group.user_investment').css(hidden);
 
-jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
-    phone_number = phone_number.replace(/\s+/g, ""); 
-	return this.optional(element) || phone_number.length > 9 &&
-		phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
-}, "Please specify a valid phone number");
-
 
 var validator = $( "#new_user" ).validate({
 	rules: {
+    	"user[name]": {
+    		fullName: true
+		},
     	"user[phone]": {
         	phoneUS: true
     	}
 	}
 });
 
+jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+    phone_number = phone_number.replace(/\s+/g, ""); 
+	return this.optional(element) || phone_number.length > 9 &&
+		phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+}, "Please specify a valid phone number");
+
+jQuery.validator.addMethod("fullName", function(name, element) {
+	return (name.split(' ').length == 2);
+}, "Please provide your full name"); 
 
 jQuery.extend(jQuery.validator.messages, {
     required:"Please fill-up",
 });
 
 $('#user_email').keydown(function() {
-//	$('#progressBar').show();
+	$('#progressBar').show();
 })
 $('#user_email').blur(function() {	
 	email_valid = validator.element( "#user_email" )
@@ -101,10 +107,9 @@ $('#user_email').blur(function() {
 $('#user_name').blur(function() {
 	if (!email_valid) {return}							
 	name_valid = validator.element( "#user_name" )
-	if (!name_valid) {
+	if (!name_valid)  {
 		$("input#user_name").focus()
 	} else {
-		if (!email_valid) {alert('but email is invalid')}
 		$('.form-group.user_name').css(hidden);
 		$('.form-group.user_phone').css(revealed);
 		progress(50, $('#progressBar'));

@@ -1,0 +1,30 @@
+<form id="new_user">
+    <input type="text" name="user[name]" />
+    <br/>
+    <input type="text" name="field2" />
+    <br/>
+</form>
+<script>
+$(document).ready(function () {
+
+    validator = $('#new_user').validate({
+        rules: {
+            "user[name]": {
+                required: true,
+                fullName: true
+            },
+            field2: {
+                required: true,
+                integer: true
+            }
+        },
+    });
+    
+    jQuery.validator.addMethod('fullName', function (name, element, param) {
+        return (name.split(' ').length == 2) ;
+    }, 'Please provide your full name');
+
+});	
+	
+	
+</script>
