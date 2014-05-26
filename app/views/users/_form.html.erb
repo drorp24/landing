@@ -5,26 +5,26 @@
   <div class="form-inputs">
   	
     <%= f.input :email, wrapper: :vertical_input_group, label: false do %>
-		<i class="icon-large icon-envelope"></i>
+		<span class="glyphicon glyphicon-envelope"></span>
 		<div class="after_icon">
 			<%= f.input_field :email, required: true, type: "email", placeholder: 'youremail@domain.com' %>
 		</div>
 	<% end %>
     <%= f.input :name, wrapper: :vertical_input_group, label: false do %>
-		<i class="icon-large icon-user"></i>
+		<span class="glyphicon glyphicon-user"></span>
 		<div class="after_icon">
 			<%= f.input_field :name, required: true, placeholder: 'Your full name?' %>
 		</div>
 	<% end %>
     <%= f.input :phone, wrapper: :vertical_input_group, label: false do %>
-		<i class="icon-large icon-phone"></i>
+		<<span class="glyphicon glyphicon-earphone"></span>
 		<div class="after_icon">
 			<%= f.input_field :phone, required: true, type: "text", placeholder: 'Your phone number?' %>
 		</div>
 	<% end %>
    	<%= f.input :investment, wrapper: :vertical_input_group, label: false do %>
-		<i class="icon-large icon-credit"></i>
-		<div class="after_icon">
+		<span class="glyphicon glyphicon-usd"></span>
+		<div class="after_icon clearfix">
 			<div id="min_investment">
 				<%= f.input_field :min_investment, required: true, data: { role: 'money', a_sign: '$', a_sep: ',', a_dec: '.' } %>
 				<%= f.hint "Investing at least" %>

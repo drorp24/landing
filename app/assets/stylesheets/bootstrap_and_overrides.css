@@ -1,11 +1,22 @@
 /*
-  =require twitter-bootstrap-static/bootstrap
-
+  require bootstrap
   Use Font Awesome icons (default)
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/sprites
+  =require glyphicons
   */
  
+body {
+    color: #888888;
+}
+
+.glyphicon {
+
+    margin-left: 4%;
+    opacity: 0.6;
+    position: absolute;
+}
+
 .click_me {
     width: 100%;
     height: 200%;
@@ -22,12 +33,14 @@
 #new_user input:focus {
     border: none;
     box-shadow: none;
+    boutline: none;
 }
 
 #new_user input {
     box-shadow: none;
     font-size: 14px;
-/*    font-size: 1.2vw; */ 
+    font-size: 1.5vw; 
+    outline: none; 
 }
 
 #new_user .user_investment input[type="text"]:focus {
@@ -35,10 +48,9 @@
 }
 #new_user .user_investment input[type="text"] {
   box-shadow: none;
-}
-
-body {
-    line-height: 40px;
+  position: absolute;
+  top: 6%;
+  width: 36%;
 }
 
 #progressBar {
@@ -97,7 +109,7 @@ body {
 }
 #new_user label {
     display: inline;
-    margin-left: 10%;
+    margin-left: 12%;
 }
 
 #new_user [class^="icon-"], [class*=" icon-"] {
@@ -107,6 +119,8 @@ body {
     margin-left: 4%;
     margin-top: auto;
     margin-bottom: auto;
+    position: relative;
+    top: 10%;
 }
 
 #new_user .alert.alert-error {
@@ -116,11 +130,12 @@ body {
     margin-top: -5px;
     width: 100%;
 }
+
 #input_container1 {
     position: absolute;
     top: 64.5%;
     left: 24.4%;
-    width: 36%;
+    width: 36%; 
     height: 7.5%;
     border: none;
     background-color: transparent; 
@@ -158,20 +173,14 @@ body {
     left: 50px;
 }
 #new_user input {
-    height: 38px;
     border: none;
-    background-color: white;  /* should be transparent */
-    margin-left: -16%;
-    padding-left: 15%;
-    width: 103%;
-    margin-top: auto;
-    margin-bottom: auto;
+    background-color: transparent;  /* should be transparent */
+   position: absolute;
 }    
 #min_investment, #max_investment {
-    width: 45%;
     margin-left: 5%;
     margin-top: 1%;
-/*    border: 1px solid black; */
+    border: 1px solid black; */
 }
 input #min_investment, input #max_investment {
     height: 95%;
@@ -207,33 +216,42 @@ input #min_investment, input #max_investment {
     border: none;
 /*    border: 1px solid blue; */
     margin-left: 13%;    
-    width: 85%;
+    width: 46%;
     margin-top: -50px;
-    height: 100%;
 }
 #new_user .form-inputs {
     border: none;
 }
 #new_user .help-block{
 }
-#new_user span.error, #new_user .hint, #new_user label.error {
+#new_user span.error, #new_user label.error {
     color: #ED8B8B;
     display: block;
     font-size: 12px; 
-    position: relative;
-    bottom: 46%;
-    line-height: 25px;
+    line-height: 0;
+    position: absolute;
+    bottom: 15px;
+    left: 2%;
+    font-size: 1vw; 
+}
+#new_user .hint {
+    position: absolute;
+    top: 40%;
+    left: 6%;
 }
 #new_user .span.error {
     left: -1%; 
 }
-#new_user label.error {
-    left: -11%;
-    font-size: 12px;
-/*    font-size: 2vmin; */ 
+#min_investment .hint {
+   position: absolute; 
+   left: 16%;
 }
-#new_user span.hint {
-    color: #999;    
-    font-size: 12px;
-/*    font-size: 1vw; */
- }
+
+#max_investment .hint {
+    position: absolute;
+    left: 59%;
+}
+#new_user .user_investment label.error {
+    position: absolute;
+    top: 2000px;
+}
