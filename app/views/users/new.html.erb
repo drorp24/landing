@@ -80,12 +80,14 @@ var	input_height	= 0.025
 var pb_top			= 0.12
 
 /* set initial position */
+/*
 if (os.isWin8 || os.isWin81 ) { 
 	('#input_container1 input').css(win8_offset) 
 } else {
+*/
 	$("#input_container1").css("top", $( window ).width()   	* top);
 	$("#input_container1").css("height", $( window ).width()   	* height);
-}
+//}
 $("#input_container1").css("left", $( window ).width()   * left);
 $("#input_container1").css("width", $( window ).width()  * width);
 $("#input_container1 .form-control input").css("height", "100%");
@@ -94,12 +96,14 @@ $("#input_container1 #progressBar").css("top", $( window ).height() * pb_top);
 
 /* set resizing position */
 $( window ).resize(function() {
+/*
 	if (os.isWin8 || os.isWin81 ) { 
 		('#input_container1 input').css(win8_offset) 
 	} else {
+*/
 		$("#input_container1").css("top", $( window ).width()   	* top);
 		$("#input_container1").css("height", $( window ).width()   	* height);
-	}
+//	}
 	$("#input_container1").css("left", $( window ).width()   * left);
 	$("#input_container1").css("width", $( window ).width()  * width);
 	$("#input_container1 .form-control input").css("height", "100%");
