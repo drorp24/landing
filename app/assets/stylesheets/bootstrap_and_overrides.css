@@ -1,7 +1,7 @@
 /*
   Use Font Awesome icons (default)
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
-  =require twitter-bootstrap-static/sprites
+ =require glyphicons
   */
  
 body {
@@ -31,7 +31,7 @@ body {
 #new_user input:focus {
     border: none;
     box-shadow: none;
-    boutline: none;
+    outline: none;
 }
 
 #new_user input {
@@ -178,7 +178,6 @@ body {
 #min_investment, #max_investment {
     margin-left: 5%;
     margin-top: 1%;
-    border: 1px solid black; */
 }
 input #min_investment, input #max_investment {
     height: 95%;
