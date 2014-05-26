@@ -4,10 +4,10 @@
     	<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   	</head>
   	<body>
-		<p>Dear <%= @user.name %>,</p>
-		<p>Thank you for your interest in GoExit.</p>
-		<p>We will contact you soon. </p>
-		<p>Looking forward to be talking with you!</p>
-		<p>GoExit Team</p>
+		<h2>New User</h2>
+		<p>Name: <%= @user.name %></p>
+		<p>Email: <%= @user.email %></p>
+		<p>Looking to invest <%= @user.min_investment %> to <%= @user.max_investment %> </p>
 	</body>
 </html>
+

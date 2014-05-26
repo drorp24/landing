@@ -7,7 +7,7 @@ class UserMailer < ActionMailer::Base
 
     email_with_name = "#{@user.name} <#{@user.email}>"
     begin
-      mail(:to => email_with_name, :subject => "Hello #{@user.name} and welcome to GoExit")
+      mail(:to => email_with_name, :subject => "New user")
     rescue
       return false
     else

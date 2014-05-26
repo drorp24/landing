@@ -1,0 +1,96 @@
+<div id="input_container1">
+	<%= render 'form' %>
+</div>
+<div id="input_container2">
+	<%= render 'to_form' %>
+</div>
+<div id="input_container3">
+	<%= render 'to_form' %>
+</div>
+	
+
+<script>
+$(document).ready(function() {
+	  	
+$("#input_container1").css("top", $( window ).width()    * 0.317);
+$("#input_container1").css("left", $( window ).width()   * 0.242);
+$("#input_container1").css("width", $( window ).width()  * 0.345);
+$("#input_container1").css("height", $( window ).height() * 0.04);
+$("#input_container1 .form-control input").css("height", $( window ).height() * 0.065);
+$("#input_container1 #progressBar").css("top", $( window ).height() * 0.12);
+
+
+$( window ).resize(function() {
+  	$("#input_container1").css("top", $( window ).width()    * 0.317);
+  	$("#input_container1").css("left", $( window ).width()   * 0.242);
+  	$("#input_container1").css("width", $( window ).width()  * 0.345);
+  	$("#input_container1").css("height", $( window ).height() * 0.04);
+  	$("#input_container1 .form-control input").css("height", $( window ).height() * 0.065);
+  	$("#input_container1 #progressBar").css("top", $( window ).height() * 0.12);
+});
+
+function get_browser(){
+    var N=navigator.appName, ua=navigator.userAgent, tem;
+    var M=ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+    if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+    M=M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
+    return M[0];
+    }
+
+var ua = navigator.userAgent;
+var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2/i.test(ua);
+var os = (function() {
+    var ua = navigator.userAgent.toLowerCase();
+    return {
+        isWin2K: /windows nt 5.0/.test(ua),
+        isXP: /windows nt 5.1/.test(ua),
+        isVista: /windows nt 6.0/.test(ua),
+        isWin7: /windows nt 6.1/.test(ua),
+        isWin8: /windows nt 6.2/.test(ua),
+        isWin81: /windows nt 6.3/.test(ua)
+    };
+}());
+
+    var win8_offset = {
+      position : "relative",
+      bottom: "40px"
+    };
+
+if (os.isWin8 || os.isWin81 ) { 
+	('#input_container1 input').css(win8_offset) 
+	}; 
+
+browser = get_browser()
+if(browser == "Firefox") {
+	$('#input_container1').css("top", "65.5%")
+	$('input').css("height", "37px")
+}
+if (browser == "Netscape")	{
+	$('#input_container1').css("top", "67%")
+	$('input').css("height", "36px")
+}
+if (browser == "MSIE")	{
+	$('#input_container1').css("top", "57%")
+	$('input').css("height", "36px")
+}
+if (isiPad)	{
+	$('#input_container1').css("top", "48%")
+	$('input').css("height", "36px")
+}
+
+/*
+	$('input').focus(function(e){
+	   $(this).on("blur", function(e){
+	   	alert($(this).attr("id"))
+	        e.stopImmediatePropagation();
+	    	e.preventDefault();
+	 		$(this).focus();
+		});
+	})	
+*/
+
+
+})
+
+</script>
+

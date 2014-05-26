@@ -12,22 +12,7 @@
 <script>
 $(document).ready(function() {
 	  	
-$("#input_container1").css("top", $( window ).width()    * 0.317);
-$("#input_container1").css("left", $( window ).width()   * 0.242);
-$("#input_container1").css("width", $( window ).width()  * 0.345);
-$("#input_container1").css("height", $( window ).height() * 0.04);
-$("#input_container1 .form-control input").css("height", $( window ).height() * 0.065);
-$("#input_container1 #progressBar").css("top", $( window ).height() * 0.12);
-
-
-$( window ).resize(function() {
-  	$("#input_container1").css("top", $( window ).width()    * 0.317);
-  	$("#input_container1").css("left", $( window ).width()   * 0.242);
-  	$("#input_container1").css("width", $( window ).width()  * 0.345);
-  	$("#input_container1").css("height", $( window ).height() * 0.04);
-  	$("#input_container1 .form-control input").css("height", $( window ).height() * 0.065);
-  	$("#input_container1 #progressBar").css("top", $( window ).height() * 0.12);
-});
+/* Find browser, OS */
 
 function get_browser(){
     var N=navigator.appName, ua=navigator.userAgent, tem;
@@ -37,8 +22,8 @@ function get_browser(){
     return M[0];
     }
 
-var ua = navigator.userAgent;
-var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2/i.test(ua);
+browser = get_browser()
+
 var os = (function() {
     var ua = navigator.userAgent.toLowerCase();
     return {
@@ -51,43 +36,73 @@ var os = (function() {
     };
 }());
 
-    var win8_offset = {
-      position : "relative",
-      bottom: "40px"
-    };
+var ua = navigator.userAgent;
+var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2/i.test(ua);
 
-if (os.isWin8 || os.isWin81 ) { 
-	('#input_container1 input').css(win8_offset) 
-	}; 
 
-browser = get_browser()
+/* set variables accordingly */
+
+if(browser == "Chrome") {
+	var top 	= 0.317 
+	var height 	= 0.04
+}
+if(browser == "Safari") {
+	var top 	= 0.317 
+	var height 	= 0.04
+}
 if(browser == "Firefox") {
-	$('#input_container1').css("top", "65.5%")
-	$('input').css("height", "37px")
+	var top		= 0.317
+	var height 	= 0.04
 }
 if (browser == "Netscape")	{
-	$('#input_container1').css("top", "67%")
-	$('input').css("height", "36px")
+	var top 	= 0.324
+	var height 	= 0.038
 }
 if (browser == "MSIE")	{
-	$('#input_container1').css("top", "57%")
-	$('input').css("height", "36px")
+	var top 	= 0.282
+	var height 	= 0.038
 }
 if (isiPad)	{
-	$('#input_container1').css("top", "48%")
-	$('input').css("height", "36px")
+	var top 	=  0.207
+	var height 	= 0.038
 }
+var win8_offset = {
+  position : "relative",
+  bottom: "40px"
+};
 
-/*
-	$('input').focus(function(e){
-	   $(this).on("blur", function(e){
-	   	alert($(this).attr("id"))
-	        e.stopImmediatePropagation();
-	    	e.preventDefault();
-	 		$(this).focus();
-		});
-	})	
-*/
+var left 			= 0.242
+var width			= 0.362
+var	input_height	= 0.025
+var pb_top			= 0.12
+
+/* set initial position */
+if (os.isWin8 || os.isWin81 ) { 
+	('#input_container1 input').css(win8_offset) 
+} else {
+	$("#input_container1").css("top", $( window ).width()   	* top);
+	$("#input_container1").css("height", $( window ).width()   	* height);
+}
+$("#input_container1").css("left", $( window ).width()   * left);
+$("#input_container1").css("width", $( window ).width()  * width);
+$("#input_container1 .form-control input").css("height", "100%");
+$("#input_container1 #progressBar").css("top", $( window ).height() * pb_top);
+
+
+/* set resizing position */
+$( window ).resize(function() {
+	if (os.isWin8 || os.isWin81 ) { 
+		('#input_container1 input').css(win8_offset) 
+	} else {
+		$("#input_container1").css("top", $( window ).width()   	* top);
+		$("#input_container1").css("height", $( window ).width()   	* height);
+	}
+	$("#input_container1").css("left", $( window ).width()   * left);
+	$("#input_container1").css("width", $( window ).width()  * width);
+	$("#input_container1 .form-control input").css("height", "100%");
+	$("#input_container1 #progressBar").css("top", $( window ).height() * pb_top);
+});
+
 
 
 })

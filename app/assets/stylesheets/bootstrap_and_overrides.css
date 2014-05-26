@@ -26,6 +26,8 @@
 
 #new_user input {
     box-shadow: none;
+    font-size: 14px;
+/*    font-size: 1.2vw; */ 
 }
 
 #new_user .user_investment input[type="text"]:focus {
@@ -158,10 +160,12 @@ body {
 #new_user input {
     height: 38px;
     border: none;
-    background-color: transparent;  /* should be transparent */
+    background-color: white;  /* should be transparent */
     margin-left: -16%;
     padding-left: 15%;
     width: 103%;
+    margin-top: auto;
+    margin-bottom: auto;
 }    
 #min_investment, #max_investment {
     width: 45%;
@@ -217,7 +221,7 @@ input #min_investment, input #max_investment {
     display: block;
     font-size: 12px; 
     position: relative;
-    bottom: 30px;
+    bottom: 46%;
     line-height: 25px;
 }
 #new_user .span.error {
@@ -225,7 +229,11 @@ input #min_investment, input #max_investment {
 }
 #new_user label.error {
     left: -11%;
+    font-size: 12px;
+/*    font-size: 2vmin; */ 
 }
 #new_user span.hint {
     color: #999;    
-}
+    font-size: 12px;
+/*    font-size: 1vw; */
+ }

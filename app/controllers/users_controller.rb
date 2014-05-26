@@ -47,7 +47,7 @@ class UsersController < ApplicationController
       if @user.save
         format.html { 
           UserMailer.welcome_email(@user).deliver
-          redirect_to @user, notice: "Thanks for your interest, #{@user.name}! We will contact you shortly."
+          redirect_to @user, notice: "Thank you for your interest!"
         }
         format.json { render json: @user, status: :created, location: @user }
       else
