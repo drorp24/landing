@@ -4,10 +4,6 @@
 <div id="input_container2">
 	<%= render 'to_form' %>
 </div>
-<div id="input_container3">
-	<%= render 'to_form' %>
-</div>
-	
 
 <script>
 $(document).ready(function() {
@@ -46,7 +42,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	var height 	= 0.04
 
 if(browser == "Chrome") {
-	var top 	= 0.317 
+	var top 	= 0.312 
 	var height 	= 0.04
 }
 if(browser == "Safari") {
@@ -58,16 +54,17 @@ if(browser == "Firefox") {
 	var height 	= 0.04
 }
 if (browser == "Netscape")	{
-	var top 	= 0.324
-	var height 	= 0.038
+	var top 	= 0.317
+	var height 	= 0.04
 }
 if (browser == "MSIE")	{
 	var top 	= 0.282
-	var height 	= 0.038
+	var top 	= 0.317
+	var height 	= 0.04
 }
 if (isiPad)	{
 	var top 	=  0.317
-	var height 	= 0.038
+	var height 	= 0.04
 }
 var win8_offset = {
   position : "relative",
@@ -77,12 +74,16 @@ var win8_offset = {
 var left 			= 0.242
 var width			= 0.36
 var	input_height	= 0.025
-var pb_top			= 0.12
+var pb_top			= 0.001
 var glyphicon		= 0.022
 var glyphicon_top	= 0.003
 var input_top		= 0.002
 var input_width		= 0.305
 var inv_input_width	= 0.120
+var ic2_top			= 4.05
+var ic2_height		= 0.31
+var ic2_width		= 0.68
+var ic2_left		= 0.16
 
 /* set initial position */
 $("#input_container1").css("top", $( window ).width()   	* top);
@@ -90,12 +91,17 @@ $("#input_container1").css("height", $( window ).width()   	* height);
 $("#input_container1").css("left", $( window ).width()   * left);
 $("#input_container1").css("width", $( window ).width()  * width);
 //$("#input_container1 .form-control input").css("height", "100%");
-$("#input_container1 #progressBar").css("top", $( window ).height() * pb_top);
+$("#input_container1 #progressBar").css("top", $( window ).width() * pb_top);
 $(".glyphicon").css("font-size", $( window ).width() * glyphicon)
 $(".glyphicon").css("top", $( window ).width() * glyphicon_top)
 $("#input_container1 .form-control input").css("top", $( window ).width()   	* input_top);
 $("#input_container1 .form-control input:not(.user_investment input)").css("width", $( window ).width()   	* input_width);
 $("#input_container1 .form-control .user_investment input").css("width", $( window ).width()   	* inv_input_width);
+
+$("#input_container2").css("top", $( window ).width()   	* ic2_top);
+$("#input_container2").css("height", $( window ).width()   	* ic2_height);
+$("#input_container2").css("left", $( window ).width()   * ic2_left);
+$("#input_container2").css("width", $( window ).width()  * ic2_width);
 
 
 /* set resizing position */
@@ -112,6 +118,13 @@ $( window ).resize(function() {
 	$("#input_container1 .form-control input").css("top", $( window ).width()   	* input_top);
 	$("#input_container1 .form-control input").css("width", $( window ).width()   	* input_width);
 	$("#input_container1 .form-control input:not(.user_investment input)").css("width", $( window ).width()   	* input_width);
+
+	$("#input_container2").css("top", $( window ).width()   	* ic2_top);
+	$("#input_container2").css("height", $( window ).width()   	* ic2_height);
+	$("#input_container2").css("left", $( window ).width()   * ic2_left);
+	$("#input_container2").css("width", $( window ).width()  * ic2_width);
+
+
 });
 
 

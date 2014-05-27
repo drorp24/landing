@@ -1,5 +1,5 @@
 <div id="progressBar" class="tiny-green" style="display: none"><div></div></div>
-<%= simple_form_for @user do |f| %>
+<%= simple_form_for @user, defaults: { input_html: { autocomplete: 'off' } } do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -17,7 +17,7 @@
 		</div>
 	<% end %>
     <%= f.input :phone, wrapper: :vertical_input_group, label: false do %>
-		<<span class="glyphicon glyphicon-earphone"></span>
+		<span class="glyphicon glyphicon-earphone"></span>
 		<div class="after_icon">
 			<%= f.input_field :phone, required: true, type: "text", placeholder: 'Your phone number?' %>
 		</div>
